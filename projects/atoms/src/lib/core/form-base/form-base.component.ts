@@ -1,10 +1,11 @@
-import { Component, OnInit, Directive, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Directive, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
     template: ''
 })
 export abstract class AbstractFormComponent {
+    @Input() clearOnSubmit = true;
     @Output() formOutput = new EventEmitter();
     submitted = false;
     public componentForm: FormGroup;
@@ -14,6 +15,7 @@ export abstract class AbstractFormComponent {
     submit(form: FormGroup) {
         this.submitted = true;
         if (form.valid || true) {
+            this.componentForm.reset();
             return this.process();
         }
         return this.formOutput.emit(false);
