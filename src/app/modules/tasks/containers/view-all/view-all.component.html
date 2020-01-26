@@ -1,0 +1,5 @@
+<atom-panel title="Open Items">
+    <atom-loading-spinner></atom-loading-spinner>
+    <app-create-task (formOutput)="handleSubmit($event)"></app-create-task>
+    <atom-todo-list [items]="todoList"></atom-todo-list>
+</atom-panel>
